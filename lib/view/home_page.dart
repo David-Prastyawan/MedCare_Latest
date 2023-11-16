@@ -524,7 +524,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-///Metode ini digunakan untuk membangun tombol pada bottom sheet, seperti "Obat Completed", "Delete Obat", dan "Close".
+  ///Metode ini digunakan untuk membangun tombol pada bottom sheet, seperti "Obat Completed", "Delete Obat", dan "Close".
   _bottomSheetButton(
       {required String label,
       required Function()? onTap,
@@ -561,7 +561,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-///Metode ini digunakan untuk menampilkan bottom sheet untuk item rumah sakit dengan opsi seperti "Rumah Sakit Completed", "Edit Obat", "Delete Obat", dan "Close".
+  ///Metode ini digunakan untuk menampilkan bottom sheet untuk item rumah sakit dengan opsi seperti "Rumah Sakit Completed", "Edit Obat", "Delete Obat", dan "Close".
   _showBottomSheetRumahSaki(
       BuildContext context, RumahSakitModel rumahSakitModel) {
     Get.bottomSheet(
@@ -630,7 +630,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-///Metode ini digunakan untuk membangun tombol pada bottom sheet rumah sakit, seperti "Rumah Sakit Completed", "Edit Obat", "Delete Obat", dan "Close".
+  ///Metode ini digunakan untuk membangun tombol pada bottom sheet rumah sakit, seperti "Rumah Sakit Completed", "Edit Obat", "Delete Obat", dan "Close".
   _bottomSheetButtonRumahSakit(
       {required String label,
       required Function()? onTap,
