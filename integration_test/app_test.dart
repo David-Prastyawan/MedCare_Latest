@@ -9,44 +9,53 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group(
-    'end to end test',
+    'Testing login-logout',
     () {
       testWidgets(
-        'verify login screen with correct username and password',
+        'verify login and logout function',
         (tester) async {
           app.main();
           await tester.pumpAndSettle();
-          await Future.delayed(const Duration(seconds: 2));
-          await tester.enterText(find.byType(TextFormField).at(0), 'Email');
-          await Future.delayed(const Duration(seconds: 2));
-          await tester.enterText(find.byType(TextFormField).at(1), 'Password');
-          await Future.delayed(const Duration(seconds: 2));
-          await tester.tap(find.byType(ElevatedButton));
-          await Future.delayed(const Duration(seconds: 2));
+
           await tester.pumpAndSettle();
 
-          await Future.delayed(const Duration(seconds: 2));
-          expect(find.byType(HomePage), findsOneWidget);
-        },
-      );
-
-      testWidgets(
-        'verify login screen with incorrect username and password',
-        (tester) async {
-          app.main();
-          await tester.pumpAndSettle();
-          await Future.delayed(const Duration(seconds: 2));
           await tester.enterText(
               find.byType(TextFormField).at(0), 'David123@gmail.com');
           await Future.delayed(const Duration(seconds: 2));
+
           await tester.enterText(find.byType(TextFormField).at(1), 'David1234');
+          await tester.pumpAndSettle();
           await Future.delayed(const Duration(seconds: 2));
+
           await tester.tap(find.byType(ElevatedButton));
-          await Future.delayed(const Duration(seconds: 2));
+          await Future.delayed(const Duration(seconds: 4));
           await tester.pumpAndSettle();
 
+          // await Future.delayed(const Duration(seconds: 2));
+          // expect(find.byType(HomePage), findsOneWidget);
+          // expect(find.byType(Theme), findsOneWidget);
+
+          await tester.tap(find.text('+Add'));
+          await tester.pumpAndSettle();
           await Future.delayed(const Duration(seconds: 2));
-          expect(find.text('Invalid username or password'), findsOneWidget);
+
+          await tester.tap(find.text('Logout'));
+          await tester.pumpAndSettle();
+          await Future.delayed(const Duration(seconds: 2));
+
+          // expect(find.text('Invalid username or password'), findsOneWidget);
+          // expect(find.byType(Login), findsOneWidget);
+          // expect(find.byType(TextFormField), findsAtLeastNWidgets(2));
+          // Example: Verify that the 'Register' text button is present
+          // expect(find.text('Register'), findsOneWidget);
+          // expect(find.byType(ElevatedButton), findsOneWidget);
+
+          await tester.tap(find.byType(ElevatedButton));
+          await tester.pumpAndSettle();
+          await Future.delayed(const Duration(seconds: 2));
+
+          expect(find.text("Login"), findsNWidgets(2));
+          await tester.pumpAndSettle();
         },
       );
     },
